@@ -1,0 +1,1503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Undercard</title>
+<meta name="description" content="Ten monthly prizes and a January cup, scored automatically off the Paisley &amp; District Draft league.">
+<meta name="theme-color" content="#37003C">
+<meta property="og:title" content="The Undercard">
+<meta property="og:description" content="Side games for the Paisley &amp; District Draft league.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8F%86%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap">
+
+<style>
+/* ---------- tokens: light is the base, dark redefines only values ---------- */
+:root{
+  --ground:#F6F3F8;
+  --surface:#FFFFFF;
+  --surface-2:#F1EAF4;
+  --surface-3:#E4DAE9;
+  --line:#DFD4E5;
+  --line-strong:#BFAEC8;
+  --ink:#1E0022;
+  --ink-2:#4B3A52;
+  --muted:#6C5C74;
+  --faint:#8E8096;
+  --accent:#D6004E;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#FCE1EC;
+  --brand:#37003C;
+  --brand-2:#2E6FC4;
+  --teal:#00707D;
+  --teal-soft:#D5F2F5;
+  --good:#00784F;
+  --good-soft:#D3F2E3;
+  --bad:#B4123C;
+  --bad-soft:#FBDFE6;
+  --warn:#8A5A00;
+  --warn-soft:#F8E9CC;
+  --onbrand:#FFFFFF;
+  --onbrand-dim:rgba(255,255,255,.72);
+  --onbrand-line:rgba(255,255,255,.28);
+  --shadow:0 1px 0 rgba(30,0,34,.05), 0 2px 10px rgba(30,0,34,.06);
+  --r:6px;
+  --f-pos:#00784F;   --f-pos-bar:#00C46A; --f-pos-soft:#E4F8EE;
+  --f-luck:#C4004A;  --f-luck-bar:#E90052; --f-luck-soft:#FCE3EE;
+  --f-inv:#12509F;   --f-inv-bar:#1D5FBF;  --f-inv-soft:#E3EDFB;
+  --f-big:#5A0F66;   --f-big-bar:#7A1E8C;  --f-big-soft:#F1E5F5;
+  --pl-cyan:#04F5FF;
+  --on-cyan:#37003C;
+  --on-cyan-dim:rgba(55,0,60,.62);
+  --plbar:linear-gradient(90deg,#37003C 0%,#963CBD 22%,#E90052 44%,#2E6FC4 68%,#04F5FF 86%,#00FF87 100%);
+  --plhead:linear-gradient(95deg,#37003C 0%,#4A1478 22%,#1D5FBF 52%,#00A8D6 78%,#04F5FF 100%);
+  --plnav:linear-gradient(95deg,#2A0A4E 0%,#2E2385 40%,#1D5FBF 100%);
+}
+
+/* Single theme by design: this page commits to the Premier League light
+   palette, so there is no prefers-color-scheme block and no toggle. Every
+   colour is painted explicitly and nothing is left to inherit. */
+html{background:var(--ground);color-scheme:light}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{
+  font-family:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-weight:700;
+  letter-spacing:-.015em;
+  text-wrap:balance;
+  margin:0;
+  line-height:1.1;
+}
+.mono{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- shell ---------- */
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+
+header.top{
+  position:sticky;top:0;z-index:50;
+  background:var(--plhead);
+  border-bottom:0;
+}
+header.top .wrap{position:relative}
+header.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--plbar)}
+.top-in{display:flex;align-items:center;gap:14px;min-height:59px;padding:9px 0}
+.crest{
+  width:38px;height:38px;flex:0 0 auto;
+  display:grid;place-items:center;
+}
+.crest .crestimg{width:38px;height:38px;display:block}
+@media(max-width:520px){.crest,.crest .crestimg{width:32px;height:32px}}
+.top-in>.idblock{min-width:0;flex:0 1 auto;overflow:hidden}
+.top h1{font-size:22px;color:var(--onbrand);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .sub{font-size:10.5px;color:var(--onbrand-dim);text-transform:uppercase;letter-spacing:.1em;font-weight:600;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spacer{flex:1 1 0;min-width:0}
+@media(max-width:640px){ #gwChipPrize{display:none} }
+@media(max-width:520px){
+  .top-in{gap:9px}
+  .top h1{font-size:19px}
+  .top .sub{display:none}
+}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  border:0;border-radius:100px;
+  padding:5px 14px;font-size:12.5px;font-weight:700;letter-spacing:-.01em;
+  background:#37003C;color:#04F5FF;white-space:nowrap;
+}
+.chip .dot{background:#00FF87}
+.chip.live{background:#37003C;color:#04F5FF}
+.chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor}
+
+button,.btn{
+  font-family:inherit;font-size:13px;font-weight:600;letter-spacing:-.005em;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);
+  padding:7px 13px;border-radius:var(--r);cursor:pointer;
+  transition:background .12s ease,border-color .12s ease;
+}
+button:hover,.btn:hover{background:var(--surface-2);border-color:var(--muted)}
+button.primary{background:#37003C;color:#FFFFFF;border-color:#37003C;border-radius:100px;padding:8px 18px}
+button.primary:hover{background:#4E0055;border-color:#4E0055}
+
+button.small{padding:4px 9px;font-size:12px}
+button:disabled{opacity:.45;cursor:not-allowed}
+.refreshbtn{
+  display:inline-flex;align-items:center;gap:7px;
+  background:#FFFFFF;color:var(--brand);border:0;border-radius:100px;
+  padding:6px 15px;font-weight:700;font-size:13px;white-space:nowrap;line-height:1.5;
+}
+.refreshbtn,.refreshbtn:hover,.refreshbtn:visited,.refreshbtn:focus{text-decoration:none;color:var(--brand)}
+.refreshbtn:hover{background:#EFE7F2}
+.refreshbtn #refreshAge{font-weight:500;opacity:.55;font-size:11.5px}
+.refreshbtn.stale{background:#00FF87;color:#0A2B18}
+.refreshbtn.busy{opacity:.6;pointer-events:none}
+.refreshbtn.stale,.refreshbtn.stale:hover,.refreshbtn.stale:visited{color:#0A2B18}
+.refreshbtn.stale:hover{background:#2BFF9B}
+.refreshbtn.stale #refreshAge{opacity:.8}
+@media(max-width:640px){.refreshbtn{padding:6px 12px}.refreshbtn #refreshAge{display:none}}
+
+nav.tabs{
+  position:sticky;top:59px;z-index:40;
+  background:var(--plnav);border-bottom:0;
+}
+.tabs-in{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs-in::-webkit-scrollbar{display:none}
+.tab{
+  border:0;background:transparent;color:var(--onbrand-dim);
+  font-size:14px;font-weight:600;letter-spacing:-.005em;
+  padding:13px 13px 11px;border-bottom:3px solid transparent;border-radius:0;
+  white-space:nowrap;
+}
+.tab:hover{background:rgba(255,255,255,.08);color:var(--onbrand)}
+.tab[aria-selected="true"]{color:var(--onbrand);border-bottom-color:#00FF87}
+.tab[aria-selected="true"]{text-shadow:0 0 12px rgba(0,255,135,.25)}
+
+main{padding:22px 0 80px}
+section.panel[hidden]{display:none}
+.section-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 4px}
+.section-head h2{font-size:25px}
+.section-head .note{font-size:13px;color:var(--muted)}
+.lead{color:var(--muted);font-size:14px;margin:2px 0 18px;max-width:68ch}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  box-shadow:var(--shadow);
+}
+.card-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:11px 14px;border-bottom:1px solid var(--line);background:var(--surface-2);
+}
+.card-head h3{font-size:16px}
+.card-head .meta{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.card-body{padding:14px}
+.grid{display:grid;gap:14px}
+
+/* ---------- monthly prize tracker ---------- */
+.tracker{
+  background:var(--pl-cyan);
+  box-shadow:0 0 0 100vmax var(--pl-cyan);
+  clip-path:inset(0 -100vmax);
+  margin:-22px 0 26px;
+  padding:26px 0 26px;
+}
+.tracker .section-head h2{color:var(--on-cyan)}
+.tracker .section-head .note{color:var(--on-cyan-dim)}
+.wall{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:0}
+@media(max-width:900px){.wall{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.wall{grid-template-columns:1fr}}
+.month{
+  position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--r);padding:14px 12px 12px;min-height:136px;overflow:hidden;
+  display:flex;flex-direction:column;gap:6px;text-align:left;align-items:stretch;
+  font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;
+}
+.month[data-fam]{--fam:var(--muted);--fam-bar:var(--line-strong);--fam-soft:var(--surface-2)}
+.month[data-fam="pos"]{--fam:var(--f-pos);--fam-bar:var(--f-pos-bar);--fam-soft:var(--f-pos-soft)}
+.month[data-fam="luck"]{--fam:var(--f-luck);--fam-bar:var(--f-luck-bar);--fam-soft:var(--f-luck-soft)}
+.month[data-fam="inv"]{--fam:var(--f-inv);--fam-bar:var(--f-inv-bar);--fam-soft:var(--f-inv-soft)}
+.month[data-fam="big"]{--fam:var(--f-big);--fam-bar:var(--f-big-bar);--fam-soft:var(--f-big-soft)}
+.month::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--fam-bar)}
+.month .mname{color:var(--fam)}
+.month[data-state="done"],.month[data-state="live"]{background:linear-gradient(0deg,var(--fam-soft),var(--fam-soft)),var(--surface)}
+.month[data-state="soon"]::before{opacity:.4}
+.month:hover{border-color:var(--fam-bar)}
+.month .mrow{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.month .mname{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.month .mname{font-weight:700;text-transform:uppercase;font-size:17px;letter-spacing:.01em}
+.month .mgw{font-size:10.5px;color:var(--faint);font-weight:600;letter-spacing:.06em}
+.month .mprize{font-size:12.5px;line-height:1.35;color:var(--ink-2);flex:1}
+.month .mpot{font-size:11.5px;font-weight:600;color:var(--teal);letter-spacing:.02em}
+.month .mwin{
+  font-size:12px;font-weight:600;color:var(--muted);
+  border-top:1px solid var(--line);padding-top:7px;margin-top:auto;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+}
+.month .mwintxt{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.month .mwin b{color:var(--ink);font-weight:600}
+.month[data-state="live"]{border-color:var(--fam-bar);box-shadow:inset 0 0 0 1px var(--fam-bar)}
+
+
+.month .mgw{white-space:nowrap}
+.stamp{
+  flex:0 0 auto;font-size:8.5px;font-weight:700;line-height:1.6;
+  letter-spacing:.11em;text-transform:uppercase;padding:2px 8px;border-radius:100px;
+}
+.stamp.live{background:var(--fam);color:var(--surface);border-radius:100px;padding:2px 8px}
+.stamp.done{background:var(--surface-3);color:var(--muted);border-radius:100px;padding:2px 8px}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{
+  text-align:left;font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;color:var(--muted);
+  padding:7px 10px;border-bottom:1px solid var(--line-strong);white-space:nowrap;
+}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--surface-2)}
+th.num,td.num{text-align:right;font-variant-numeric:tabular-nums}
+td.rank{
+  width:36px;font-weight:700;font-size:17px;font-variant-numeric:tabular-nums;
+  color:var(--faint);text-align:center;padding-right:0;
+}
+tr.lead td.rank{color:#FFFFFF}
+tr.lead td.rank::before{
+  content:attr(data-r);display:inline-grid;place-items:center;
+  min-width:26px;height:26px;padding:0 5px;border-radius:7px;
+  background:#37003C;color:#FFFFFF;font-size:14px;font-weight:700;
+}
+tr.lead td.rank{font-size:0}
+tr.lead td.who{font-weight:600}
+td.who{min-width:150px}
+td.who .team{font-weight:600}
+td.who .mgr{font-size:11.5px;color:var(--muted);display:block;line-height:1.2}
+.big{font-weight:600;font-size:15px}
+.pill{
+  display:inline-block;padding:1px 7px;border-radius:100px;font-size:11px;font-weight:600;
+  border:1px solid transparent;white-space:nowrap;
+}
+.pill.w{background:var(--good-soft);color:var(--good)}
+.pill.l{background:var(--bad-soft);color:var(--bad)}
+.pill.d{background:var(--surface-3);color:var(--muted)}
+.pill.out{background:var(--bad-soft);color:var(--bad)}
+.pill.in{background:var(--good-soft);color:var(--good)}
+.pill.warnp{background:var(--warn-soft);color:var(--warn)}
+.pill.teal{background:var(--teal-soft);color:var(--teal)}
+
+tr.avgrow td{color:var(--faint)}
+tr.avgrow td.who .team{font-weight:500}
+.empty{
+  border:1px dashed var(--line-strong);border-radius:var(--r);
+  padding:26px 18px;text-align:center;color:var(--muted);font-size:13.5px;
+  background:var(--surface-2);
+}
+.empty b{color:var(--ink);font-weight:600;display:block;margin-bottom:4px;font-size:14.5px}
+
+/* ---------- forms ---------- */
+label.f{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+input[type=text],input[type=number],select,textarea{
+  width:100%;font-family:inherit;font-size:14px;color:var(--ink);
+  background:var(--ground);border:1px solid var(--line-strong);border-radius:var(--r);
+  padding:8px 10px;
+}
+textarea{font-size:12px;line-height:1.5;resize:vertical}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.row>*{flex:1 1 160px}
+.row>.narrow{flex:0 1 110px}
+.row>.act{flex:0 0 auto}
+
+details.rule{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);margin-bottom:8px}
+details.rule>summary{
+  cursor:pointer;padding:10px 13px;
+  font-size:15px;font-weight:600;letter-spacing:-.01em;
+  display:flex;align-items:center;gap:9px;list-style:none;
+}
+details.rule>summary::-webkit-details-marker{display:none}
+details.rule>summary::before{content:"+";color:var(--accent);font-size:19px;line-height:1}
+details.rule[open]>summary::before{content:"–"}
+details.rule .rb{padding:0 13px 13px;font-size:13.5px;color:var(--ink-2)}
+details.rule .rb p{margin:0 0 8px}
+details.rule .rb ul{margin:0 0 8px;padding-left:19px}
+details.rule .rb li{margin-bottom:4px}
+.tag{
+  font-size:11px;background:var(--surface-2);
+  border:1px solid var(--line);border-radius:2px;padding:1px 5px;color:var(--muted);
+}
+
+.toast{
+  position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+  background:var(--ink);color:var(--ground);padding:9px 16px;border-radius:var(--r);
+  font-size:13px;font-weight:500;z-index:100;box-shadow:0 4px 20px rgba(0,0,0,.25);
+  opacity:0;pointer-events:none;transition:opacity .18s ease;max-width:90vw;text-align:center;
+}
+.toast.show{opacity:1}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:11px 13px}
+.kpi .k{font-size:10.5px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+.kpi .v{font-weight:700;font-size:27px;line-height:1.1;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .s{font-size:12px;color:var(--muted)}
+
+.bracket{display:flex;gap:14px;overflow-x:auto;padding-bottom:6px}
+.round{flex:0 0 210px;display:flex;flex-direction:column;gap:8px;justify-content:space-around}
+.round h4{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.tie{border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.tie .side{display:flex;justify-content:space-between;gap:8px;padding:6px 9px;font-size:12.5px}
+.tie .side+.side{border-top:1px solid var(--line)}
+.tie .side.won{background:var(--good-soft);font-weight:600}
+.tie .side .p{color:var(--muted)}
+
+.divider{height:1px;background:var(--line);margin:22px 0}
+.small{font-size:12px;color:var(--muted)}
+code.k{font-size:12px;background:var(--surface-2);padding:1px 5px;border-radius:2px;border:1px solid var(--line)}
+.banner{
+  border:1px solid var(--line-strong);border-left:3px solid var(--accent);
+  background:var(--surface);border-radius:var(--r);padding:11px 14px;font-size:13px;color:var(--ink-2);
+}
+.banner b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="crest" id="crest"><img class="crestimg" alt="" src="data:image/png;base64,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"></div>
+    <div class="idblock">
+      <h1 id="leagueName">The Undercard</h1>
+      <div class="sub" id="leagueSub">Mini games for a Fantasy Draft league</div>
+    </div>
+    <div class="spacer"></div>
+    <span class="chip" id="gwChip"><span class="dot"></span><span id="gwChipTxt">Pre-season</span><span id="gwChipPrize"></span></span>
+    <button class="refreshbtn" id="refreshBtn" type="button">Refresh<span id="refreshAge"></span></button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap tabs-in" role="tablist">
+    <button class="tab" role="tab" data-tab="season" aria-selected="true">Season</button>
+    <button class="tab" role="tab" data-tab="month" aria-selected="false">This Month</button>
+    <button class="tab" role="tab" data-tab="weekly" aria-selected="false">Gameweek</button>
+    <button class="tab" role="tab" data-tab="star" aria-selected="false">Star Player</button>
+    <button class="tab" role="tab" data-tab="cup" aria-selected="false">The Cup</button>
+    <button class="tab" role="tab" data-tab="rules" aria-selected="false">Rules</button>
+    <button class="tab" role="tab" data-tab="data" aria-selected="false">Data</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ============ SEASON ============ -->
+  <section class="panel" id="p-season">
+    <div class="banner" id="seedBanner" hidden style="margin-bottom:16px"></div>
+    <div class="tracker">
+      <div class="section-head"><h2>Monthly prize tracker</h2><span class="note">Ten months, ten trophies. Tap one for the full table.</span></div>
+      <div class="wall" id="wall"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-head"><h2>Honours board</h2><span class="note">Everything won so far</span></div>
+    <div class="card" style="margin-bottom:22px"><div class="card-body" id="honours"></div></div>
+
+    <div class="section-head"><h2>Main league</h2><span class="note">Straight from the Draft app — the table the mini games hang off</span></div>
+    <div class="card"><div class="tw"><table id="tblStandings"></table></div></div>
+  </section>
+
+  <!-- ============ THIS MONTH ============ -->
+  <section class="panel" id="p-month" hidden>
+    <div class="section-head"><h2 id="monthTitle">This month</h2><span class="note" id="monthNote"></span></div>
+    <p class="lead" id="monthDesc"></p>
+    <div class="row" style="margin-bottom:14px">
+      <div style="flex:0 1 280px"><label class="f" for="monthPick">Month</label>
+        <select id="monthPick"></select></div>
+    </div>
+    <div class="card"><div class="tw"><table id="tblMonth"></table></div></div>
+  </section>
+
+  <!-- ============ WEEKLY ============ -->
+  <section class="panel" id="p-weekly" hidden>
+    <div class="section-head"><h2>Gameweek</h2><span class="note">The raw numbers behind every prize</span></div>
+    <p class="lead">No trophy attached — this is the working-out. Scores, benches and star picks for any gameweek, so you can check a monthly table adds up.</p>
+    <div class="row" style="margin-bottom:14px">
+      <div style="flex:0 1 180px"><label class="f" for="gwPick">Gameweek</label><select id="gwPick"></select></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>Gameweek detail</h3><span class="meta" id="gwDetailMeta"></span></div>
+      <div class="tw"><table id="tblWeek"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ STAR PLAYER ============ -->
+  <section class="panel" id="p-star" hidden>
+    <div class="section-head"><h2>Star player</h2><span class="note" id="starScope">December only</span></div>
+    <p class="lead">December's prize. Name one player from your squad each gameweek <b>during December</b>, and their points that week go into your tally. Same player as often as you like. It does not run in any other month.</p>
+    <div class="banner" id="starWindow" style="margin-bottom:16px"></div>
+    <div class="card" style="margin-bottom:16px" id="starForm">
+      <div class="card-head"><h3>Submit your pick</h3><span class="meta" id="starGwMeta"></span></div>
+      <div class="card-body">
+        <div class="row">
+          <div><label class="f" for="starWho">You</label><select id="starWho"></select></div>
+          <div><label class="f" for="starPlayer">Star player</label><input type="text" id="starPlayer" placeholder="Player name" list="playerList"></div>
+          <div class="act"><button class="primary" id="starCopy">Copy pick for the group chat</button></div>
+        </div>
+        <p class="small" style="margin:10px 0 0">Paste the line it gives you into WhatsApp. Whoever runs the league sends them on to be added to the page.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h3>December table</h3><span class="meta" id="decMeta"></span></div>
+      <div class="tw"><table id="tblStarDec"></table></div>
+    </div>
+  </section>
+
+  <!-- ============ CUP ============ -->
+  <section class="panel" id="p-cup" hidden>
+    <div class="section-head"><h2>The January cup</h2><span class="note">Straight knockout, random draw</span></div>
+    <p class="lead" id="cupLead">Straight knockout, drawn at random. Your gameweek score is your score in the tie — highest wins, and if it's level the higher league position goes through.</p>
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-head"><h3>The draw</h3><span class="meta" id="cupMeta"></span></div>
+      <div class="card-body">
+        <div class="row">
+          <div class="act"><button id="cupDraw">Make the draw</button></div>
+          <div class="act"><button id="cupClear">Clear</button></div>
+          <div class="act"><label class="small" style="display:flex;align-items:center;gap:7px;cursor:pointer">
+            <input type="checkbox" id="cupSeeded" checked style="width:auto"> Byes to the top of the table
+          </label></div>
+        </div>
+        <p class="small" style="margin:10px 0 0">With the box ticked, the byes go to whoever is highest in the league when you draw it, and everyone else is pulled out at random — so a bye is earned rather than lucky. Untick it for a straight random draw. Rounds are scored from the January gameweeks in order. Anyone can look; only whoever runs the league should press it.</p>
+      </div>
+    </div>
+    <div class="card"><div class="card-body"><div class="bracket" id="bracket"></div></div></div>
+  </section>
+
+  <!-- ============ RULES ============ -->
+  <section class="panel" id="p-rules" hidden>
+    <div class="section-head"><h2>The rulebook</h2><span class="note">Settle arguments here</span></div>
+    <p class="lead">Everything below is scored off the Fantasy Draft API, so there's no arguing with it — apart from the bits marked as manual, which need someone to type them in.</p>
+    <div id="rulesBox"></div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section class="panel" id="p-data" hidden>
+    <div class="section-head"><h2>Where the numbers come from</h2><span class="note">Updated automatically, every hour</span></div>
+    <p class="lead">A job runs every hour, reads the official Fantasy Draft API and writes the scores this page reads. Nobody has to do anything, and the link never changes. <b>Refresh</b> at the top pulls the newest file straight away.</p>
+
+    <div class="banner" style="margin-bottom:16px"><b>Last updated:</b> <span id="freshLine">—</span></div>
+
+    <div class="card" style="margin-bottom:16px">
+      <div class="card-head"><h3>Changing the rules</h3><span class="meta">config.json</span></div>
+      <div class="card-body">
+        <p style="margin:0 0 8px;font-size:13.5px;color:var(--ink-2)">Prize money, the gameweeks each month covers, and the agreed first and second round picks all live in <code class="k">data/config.json</code>. Edit that file and everything below retotals on the next update.</p>
+        <p style="margin:0;font-size:13.5px;color:var(--ink-2)">The star player names for December are the only thing that cannot be fetched — they go in the same file.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>Calendar and prize money</h3><span class="meta">As configured</span></div>
+      <div class="card-body"><div class="tw"><table id="tblCal"></table></div></div>
+    </div>
+  </section>
+
+</main>
+
+<datalist id="playerList"></datalist>
+<div class="toast" id="toast"></div>
+
+<script type="application/json" id="seedData">{"v": 1, "leagueId": 27214, "leagueName": "Paisley & District Draft", "generated": "2026-08-23T21:33:36Z", "currentEvent": 1, "nextEvent": 2, "entries": [{"id": 140573, "entryId": 139958, "name": "Ryan Fox Rovers", "manager": "Greg McGhee", "short": "GM"}, {"id": 141630, "entryId": 141013, "name": "Hotel?...Thiago", "manager": "Craig Docherty", "short": "CD"}, {"id": 141792, "entryId": 141174, "name": "Liv Laugh Lavia", "manager": "Ross Skinner", "short": "RS"}, {"id": 141892, "entryId": 141274, "name": "JACKS EGGS", "manager": "Jack Docherty", "short": "JD"}, {"id": 142292, "entryId": 141674, "name": "Team Name", "manager": "David Struthers", "short": "DS"}, {"id": 143581, "entryId": 142960, "name": "Legion XII", "manager": "Alessandro Imponenti", "short": "AI"}, {"id": 161025, "entryId": 160306, "name": "HwangOnAMinute", "manager": "Fraser Reid", "short": "FR"}, {"id": 161876, "entryId": 161148, "name": "The 🤴🏻 of Monthlys", "manager": "Craig Williams", "short": "CW"}, {"id": 173303, "entryId": 172484, "name": "Bigger Big Balls FC", "manager": "Craig Skinner", "short": "CS"}, {"id": 180412, "entryId": null, "name": "AVERAGE", "manager": "", "short": "AV", "avg": true}], "draft": {"141892": [411, 366], "173303": [426, 428], "141792": [379, 399], "161876": [12, 40], "142292": [397, 526], "161025": [427, 4], "140573": [154, 439], "143581": [165, 25], "141630": [106, 55]}, "players": {"411": {"n": "Haaland", "t": 0}, "439": {"n": "Šeško", "t": 0}, "106": {"n": "Thiago", "t": 0}, "55": {"n": "Watkins", "t": 0}, "379": {"n": "Isak", "t": 0}, "399": {"n": "Cherki", "t": 0}, "426": {"n": "B.Fernandes", "t": 0}, "366": {"n": "Wirtz", "t": 0}, "397": {"n": "Semenyo", "t": 0}, "526": {"n": "Solanke", "t": 0}, "165": {"n": "João Pedro", "t": 0}, "25": {"n": "Gyökeres", "t": 0}, "427": {"n": "Mbeumo", "t": 0}, "4": {"n": "Gabriel", "t": 0}, "154": {"n": "Palmer", "t": 0}, "40": {"n": "Rogers", "t": 0}, "12": {"n": "Saka", "t": 0}, "428": {"n": "Cunha", "t": 0}}, "gws": {"1": {"finished": false, "provisional": true, "matches": [{"a": 161025, "ap": 41, "b": 140573, "bp": 44}, {"a": 161876, "ap": 43, "b": 143581, "bp": 24}, {"a": 173303, "ap": 22, "b": 142292, "bp": 10}, {"a": 180412, "ap": 30, "b": 141892, "bp": 17}, {"a": 141630, "ap": 39, "b": 141792, "bp": 31}], "squads": {}}}, "draftPts": {"1": {"411": 2, "439": 1, "426": 2, "428": 2, "379": 2, "399": 8, "40": 0, "366": 2, "397": 2, "526": 1, "427": 2, "4": 5, "165": 0, "25": 0, "106": 0, "55": 0, "12": 9, "154": 0}}, "standings": [], "fixtures": [], "draftAgreed": true}</script>
+
+<script type="text/plain" id="fetchScript">
+/* ---- The Undercard · season fetch ---------------------------------------
+   Run this in the browser console on https://draft.premierleague.com
+   while logged in. It collects everything the mini games need and copies
+   one blob to your clipboard.
+-------------------------------------------------------------------------- */
+(async () => {
+  const LEAGUE_ID = __LEAGUE_ID__;              // <- your league
+  const api = async p => {
+    const r = await fetch('/api/' + p, {credentials:'include'});
+    if (!r.ok) throw new Error(p + ' -> ' + r.status);
+    return r.json();
+  };
+  const log = m => console.log('%c[Undercard] ' + m, 'color:#F2A93B;font-weight:bold');
+
+  log('league ' + LEAGUE_ID + ' ...');
+  const [details, choices, boot, game] = await Promise.all([
+    api('league/' + LEAGUE_ID + '/details'),
+    api('draft/' + LEAGUE_ID + '/choices').catch(() => ({choices: []})),
+    api('bootstrap-static'),
+    api('game')
+  ]);
+
+  const POS = {1:'GK', 2:'DEF', 3:'MID', 4:'FWD'};
+  const players = {};
+  for (const e of boot.elements) {
+    players[e.id] = { n: e.web_name, t: e.element_type };
+  }
+
+  // Leagues with an odd number of managers carry an extra "AVERAGE" side so
+  // everyone gets a fixture. It is a real opponent but never a prize winner.
+  const entries = details.league_entries.map(e => {
+    const avg = (e.entry_id == null || !e.entry_name);
+    return {
+      id: e.id,
+      entryId: e.entry_id,
+      name: avg ? 'AVERAGE' : e.entry_name,
+      manager: avg ? '' : ((e.player_first_name || '') + ' ' + (e.player_last_name || '')).trim(),
+      short: e.short_name,
+      avg: avg || undefined
+    };
+  });
+  log(entries.filter(e => !e.avg).length + ' managers' + (entries.some(e => e.avg) ? ' (+ an AVERAGE side)' : ''));
+  const byEntryId = {};
+  entries.forEach(e => { if (e.entryId) byEntryId[e.entryId] = e.id; });
+
+  // draft picks in order, keyed by league_entry id
+  const draft = {};
+  const ordered = (choices.choices || []).slice().sort((a, b) => (a.index || a.pick) - (b.index || b.pick));
+  for (const c of ordered) {
+    const lid = byEntryId[c.entry] != null ? byEntryId[c.entry] : c.entry;
+    (draft[lid] = draft[lid] || []).push(c.element);
+  }
+
+  // the two earliest picks for each manager — August is scored off these
+  const keyPicks = new Set();
+  Object.keys(draft).forEach(k => draft[k].slice(0, 2).forEach(el => keyPicks.add(el)));
+
+  const last = game.current_event || 0;
+  log(last ? ('gameweeks 1-' + last) : 'no gameweek finished yet');
+
+  const gws = {}, draftPts = {};
+  for (let gw = 1; gw <= last; gw++) {
+    const matches = details.matches
+      .filter(m => m.event === gw && m.started)
+      .map(m => ({ a: m.league_entry_1, ap: m.league_entry_1_points, b: m.league_entry_2, bp: m.league_entry_2_points }));
+
+    let live = {};
+    try { live = (await api('event/' + gw + '/live')).elements || {}; }
+    catch (err) { log('no live data for GW' + gw); }
+    const pts = id => {
+      const el = live[id];
+      if (!el) return 0;
+      if (el.stats && typeof el.stats.total_points === 'number') return el.stats.total_points;
+      return typeof el.total_points === 'number' ? el.total_points : 0;
+    };
+
+    draftPts[gw] = {};
+    keyPicks.forEach(el => { draftPts[gw][el] = pts(el); });
+
+    const squads = {};
+    for (const e of entries) {
+      if (!e.entryId) continue;
+      let d;
+      try { d = await api('entry/' + e.entryId + '/event/' + gw); }
+      catch (err) { continue; }
+      const picks = (d.picks || []).slice().sort((x, y) => x.position - y.position);
+      let start = picks.filter(p => p.position <= 11).map(p => p.element);
+      let bench = picks.filter(p => p.position > 11).map(p => p.element);
+      for (const s of (d.subs || d.automatic_subs || [])) {
+        const inEl = s.element_in, outEl = s.element_out;
+        if (bench.includes(inEl) && start.includes(outEl)) {
+          start = start.map(x => x === outEl ? inEl : x);
+          bench = bench.map(x => x === inEl ? outEl : x);
+        }
+      }
+      squads[e.id] = {
+        start: start.map(id => ({ e: id, p: pts(id) })),
+        bench: bench.map(id => ({ e: id, p: pts(id) }))
+      };
+    }
+    gws[gw] = { finished: true, matches, squads };
+    log('GW' + gw + ' done');
+  }
+
+  const out = {
+    v: 1,
+    leagueId: LEAGUE_ID,
+    leagueName: details.league.name,
+    generated: new Date().toISOString(),
+    currentEvent: game.current_event,
+    nextEvent: game.next_event,
+    entries, draft, players, gws, draftPts,
+    standings: details.standings,
+    fixtures: details.matches.map(m => ({ ev: m.event, a: m.league_entry_1, b: m.league_entry_2 }))
+  };
+  const blob = JSON.stringify(out);
+  try { await navigator.clipboard.writeText(blob); log('copied ' + Math.round(blob.length / 1024) + 'kb to clipboard — paste it into The Undercard'); }
+  catch (err) { console.log(blob); log('clipboard blocked — copy the blob logged above'); }
+  window.__undercard = out;
+})();
+</script>
+
+<script>
+(() => {
+"use strict";
+
+/* ===================== constants ===================== */
+const POSNAME = {1:'Goalkeeper', 2:'Defender', 3:'Midfielder', 4:'Forward'};
+const POSSHORT = {1:'GK', 2:'DEF', 3:'MID', 4:'FWD'};
+
+const PRIZES = [
+  {key:'aug', fam:'inv', month:'August',   name:'Slow Starters',    line:'Fewest points from your first two draft picks',        type:'draft12',  dir:'asc',  unit:'pts'},
+  {key:'sep', fam:'pos', month:'September',name:'Safe Hands',       line:'Most points from your starting goalkeeper',            type:'pos', pos:1, scope:'start', dir:'desc', unit:'pts'},
+  {key:'oct', fam:'luck', month:'October',  name:'Good & Lucky',     line:'Win a fixture with the fewest points',                 type:'winlow',   dir:'asc',  unit:'pts'},
+  {key:'nov', fam:'inv', month:'November', name:'Anti-Bench Boost', line:'Most points left on the bench in a single gameweek',   type:'benchmax', dir:'desc', unit:'pts'},
+  {key:'dec', fam:'big', month:'December', name:'Star Player',      line:'Most points from a player you name each week',              type:'star',     dir:'desc', unit:'pts'},
+  {key:'jan', fam:'big', month:'January',  name:'The Cup',          line:'Straight knockout, random draw',                       type:'cup'},
+  {key:'feb', fam:'pos', month:'February', name:'Back Line',        line:'Most points from every defender you own',              type:'pos', pos:2, scope:'squad', dir:'desc', unit:'pts'},
+  {key:'mar', fam:'luck', month:'March',    name:'Lucky Loser',      line:'Lose a fixture with the most points',                  type:'losehigh', dir:'desc', unit:'pts'},
+  {key:'apr', fam:'pos', month:'April',    name:'Engine Room',      line:'Most points from every midfielder you own',            type:'pos', pos:3, scope:'squad', dir:'desc', unit:'pts'},
+  {key:'may', fam:'pos', month:'May',      name:'Up Top',           line:'Most points from every forward you own',               type:'pos', pos:4, scope:'squad', dir:'desc', unit:'pts'}
+];
+const DEFAULT_CAL = {aug:[1,2], sep:[3,5], oct:[6,9], nov:[10,12], dec:[13,18], jan:[19,23], feb:[24,27], mar:[28,31], apr:[32,34], may:[35,38]};
+
+/* ===================== state ===================== */
+const BLANK_LOCAL = {cfg:{leagueId:'', admin:''}, cal:JSON.parse(JSON.stringify(DEFAULT_CAL)), pot:{}, picks:{}, cup:null};
+const S = {data:null, local:JSON.parse(JSON.stringify(BLANK_LOCAL)), writable:false, tab:'season', monthKey:null, gw:null};
+const LS = 'undercard.v1';
+
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function toast(msg){
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ===================== persistence ===================== */
+function saveLocal(){
+  try { localStorage.setItem(LS, JSON.stringify(S.local)); } catch(e){}
+}
+function readLocal(){
+  try {
+    const raw = localStorage.getItem(LS);
+    if (raw) S.local = Object.assign(JSON.parse(JSON.stringify(BLANK_LOCAL)), JSON.parse(raw));
+  } catch(e){}
+}
+// The page loads whatever the hourly job last wrote. That file is the truth;
+// the copy baked into this HTML is only a fallback for the very first load.
+async function loadShared(){
+  let fetched = null;
+  try {
+    const r = await fetch('data/season.json?ts=' + Date.now(), {cache:'no-store'});
+    if (r.ok) fetched = await r.json();
+  } catch(e){}
+  let seed = null;
+  try {
+    const el = document.getElementById('seedData');
+    if (el) seed = JSON.parse(el.textContent);
+  } catch(e){}
+  const stamp = d => (d && d.generated) ? Date.parse(d.generated) || 0 : 0;
+  const candidates = [fetched, seed].filter(Boolean);
+  if (candidates.length) S.data = candidates.reduce((a,b) => stamp(b) > stamp(a) ? b : a);
+  S.fetchFailed = !fetched;
+  return !!fetched;
+}
+
+/* ===================== helpers over data ===================== */
+const allEntries = () => (S.data && S.data.entries) || [];
+const isAvg = e => !!(e && (e.avg || e.entryId == null || !e.name || e.name === 'AVERAGE'));
+const entries = () => allEntries().filter(e => !isAvg(e));
+const entryById = id => allEntries().find(e => String(e.id) === String(id));
+const teamName = id => { const e = entryById(id); return e ? e.name : ('#' + id); };
+const mgrName  = id => { const e = entryById(id); return e ? (e.manager || e.name) : ('#' + id); };
+const playerName = id => (S.data && S.data.players && S.data.players[id] ? S.data.players[id].n : ('#'+id));
+const playerType = id => (S.data && S.data.players && S.data.players[id] ? S.data.players[id].t : 0);
+
+const DEFAULT_POT = 60;
+function potOf(key){
+  const v = S.data && S.data.pot && S.data.pot[key];
+  const n = (v === '' || v == null) ? DEFAULT_POT : Number(v);
+  return isFinite(n) && n >= 0 ? n : 0;
+}
+function money(n){ return '\u00a3' + Math.round(n).toLocaleString('en-GB'); }
+function calRange(key){ return (S.data && S.data.cal && S.data.cal[key]) || DEFAULT_CAL[key]; }
+function playedGws(){
+  if (!S.data || !S.data.gws) return [];
+  return Object.keys(S.data.gws).map(Number).sort((a,b) => a - b);
+}
+function monthGws(key){
+  const [a,b] = calRange(key);
+  return playedGws().filter(g => g >= a && g <= b);
+}
+function gwOf(n){ return S.data && S.data.gws ? S.data.gws[n] : null; }
+
+function scoreOf(gw, eid){
+  const g = gwOf(gw); if (!g) return null;
+  for (const m of g.matches || []){
+    if (String(m.a) === String(eid)) return m.ap;
+    if (String(m.b) === String(eid)) return m.bp;
+  }
+  return null;
+}
+function resultOf(gw, eid){
+  const g = gwOf(gw); if (!g) return null;
+  for (const m of g.matches || []){
+    let me, them, opp;
+    if (String(m.a) === String(eid)) { me = m.ap; them = m.bp; opp = m.b; }
+    else if (String(m.b) === String(eid)) { me = m.bp; them = m.ap; opp = m.a; }
+    else continue;
+    return {me, them, opp, res: me > them ? 'W' : me < them ? 'L' : 'D', margin: me - them};
+  }
+  return null;
+}
+function squad(gw, eid){
+  const g = gwOf(gw); if (!g || !g.squads) return null;
+  return g.squads[eid] || null;
+}
+function benchPts(gw, eid){
+  const s = squad(gw, eid);
+  if (!s || !Array.isArray(s.bench)) return null;
+  return s.bench.reduce((t,p) => t + (p.p||0), 0);
+}
+function posPts(gw, eid, type, scope){
+  const s = squad(gw, eid); if (!s || !Array.isArray(s.start)) return null;
+  if (scope === 'squad' && !Array.isArray(s.bench)) return null;
+  const pool = scope === 'squad' ? s.start.concat(s.bench) : s.start;
+  // an unknown position would silently score 0, so refuse to guess
+  if (pool.some(p => !playerType(p.e))) return null;
+  return pool.filter(p => playerType(p.e) === type).reduce((t,p) => t + (p.p||0), 0);
+}
+function pickFor(gw, eid, kind){
+  const g = S.local.picks[gw]; if (!g) return null;
+  const p = g[eid]; return p ? p[kind] : null;
+}
+function rawPts(gw, elementId){
+  const dp = S.data && S.data.draftPts && S.data.draftPts[gw];
+  if (dp && dp[elementId] != null) return dp[elementId];
+  const v = playerPtsInGw(gw, elementId);
+  return v == null ? 0 : v;
+}
+function playerPtsInGw(gw, elementId){
+  const g = gwOf(gw); if (!g || !g.squads) return null;
+  for (const eid of Object.keys(g.squads)){
+    const s = g.squads[eid];
+    for (const p of s.start.concat(s.bench)) if (String(p.e) === String(elementId)) return p.p || 0;
+  }
+  return null;
+}
+function findElementByName(name){
+  if (!S.data || !S.data.players || !name) return null;
+  const q = String(name).trim().toLowerCase();
+  const ids = Object.keys(S.data.players);
+  let hit = ids.find(id => S.data.players[id].n.toLowerCase() === q);
+  if (!hit) hit = ids.find(id => S.data.players[id].n.toLowerCase().startsWith(q));
+  if (!hit) hit = ids.find(id => S.data.players[id].n.toLowerCase().includes(q));
+  return hit ? Number(hit) : null;
+}
+function starPts(gw, eid){
+  const nm = pickFor(gw, eid, 'star'); if (!nm) return null;
+  const el = findElementByName(nm); if (!el) return null;
+  const p = playerPtsInGw(gw, el);
+  return p == null ? null : p;
+}
+
+/* ===================== prize scoring ===================== */
+function prizeTable(prize){
+  const gws = monthGws(prize.key);
+  const rows = [];
+  if (!S.data) return {rows, gws, cols:[]};
+
+  if (prize.type === 'pos'){
+    for (const e of entries()){
+      let tot = null, det = [];
+      for (const g of gws){
+        const v = posPts(g, e.id, prize.pos, prize.scope);
+        det.push(v);
+        if (v != null) tot = (tot || 0) + v;
+      }
+      rows.push({eid:e.id, value:tot, detail:det});
+    }
+    return finish(rows, gws, prize, ['Total', (prize.scope === 'squad' ? 'All ' : 'Starting ') + POSSHORT[prize.pos] + ' points by gameweek']);
+  }
+
+  if (prize.type === 'draft12'){
+    for (const e of entries()){
+      const picks = ((S.data.draft || {})[e.id] || []).slice(0, 2);
+      let tot = 0;
+      const parts = picks.map(el => {
+        let sub = 0;
+        for (const g of gws) sub += rawPts(g, el);
+        tot += sub;
+        return esc(playerName(el)) + ' <b>' + sub + '</b>';
+      });
+      rows.push({eid:e.id, value:tot, note: parts.join(' + ') || '\u2014', html:true});
+    }
+    return finish(rows, gws, prize, ['Total', 'Your first two picks']);
+  }
+
+  if (prize.type === 'benchmax'){
+    for (const e of entries()){
+      let best = null, bg = null;
+      for (const g of gws){ const v = benchPts(g, e.id); if (v != null && (best == null || v > best)){ best = v; bg = g; } }
+      rows.push({eid:e.id, value: best, note: bg ? ('GW' + bg) : 'No squad data yet'});
+    }
+    return finish(rows, gws, prize, ['Best bench', 'Gameweek']);
+  }
+
+  if (prize.type === 'winlow' || prize.type === 'losehigh'){
+    const want = prize.type === 'winlow' ? 'W' : 'L';
+    for (const e of entries()){
+      let best = null, bg = null, opp = null;
+      for (const g of gws){
+        const r = resultOf(g, e.id); if (!r || r.res !== want) continue;
+        const better = best == null || (prize.type === 'winlow' ? r.me < best : r.me > best);
+        if (better){ best = r.me; bg = g; opp = r.opp; }
+      }
+      rows.push({eid:e.id, value:best, note: bg ? ('GW' + bg + ' v ' + teamName(opp)) : (want === 'W' ? 'No wins yet' : 'No defeats yet')});
+    }
+    return finish(rows.filter(r => r.value != null).concat(rows.filter(r => r.value == null)), gws, prize,
+      [prize.type === 'winlow' ? 'Winning score' : 'Losing score', 'Fixture']);
+  }
+
+  if (prize.type === 'star'){
+    for (const e of entries()){
+      let tot = 0, n = 0;
+      for (const g of gws){ const v = starPts(g, e.id); if (v != null){ tot += v; n++; } }
+      rows.push({eid:e.id, value:tot, note: n + ' of ' + gws.length + ' weeks named'});
+    }
+    return finish(rows, gws, prize, ['Star points', 'Picks in']);
+  }
+
+  return {rows, gws, cols:[]};
+}
+function finish(rows, gws, prize, cols){
+  const dir = prize.dir === 'asc' ? 1 : -1;
+  rows.sort((a,b) => {
+    if (a.value == null && b.value == null) return 0;
+    if (a.value == null) return 1;
+    if (b.value == null) return -1;
+    return (a.value - b.value) * dir;
+  });
+  let rank = 0, prev = null;
+  rows.forEach((r,i) => { if (r.value !== prev){ rank = i + 1; prev = r.value; } r.rank = r.value == null ? null : rank; });
+  return {rows, gws, cols};
+}
+function prizeState(key){
+  const [a,b] = calRange(key);
+  const played = playedGws();
+  const maxPlayed = played.length ? Math.max(...played) : 0;
+  if (maxPlayed >= b) return 'done';
+  if (maxPlayed >= a - 1 && maxPlayed < b) return maxPlayed >= a ? 'live' : (maxPlayed === a - 1 ? 'live' : 'soon');
+  return 'soon';
+}
+
+/* ===================== weekly ===================== */
+function weekTable(gw){
+  const rows = entries().map(e => {
+    const r = resultOf(gw, e.id);
+    return {
+      eid: e.id,
+      score: r ? r.me : (scoreOf(gw, e.id) || 0),
+      me: r ? r.me : null,
+      them: r ? r.them : null,
+      res: r ? r.res : null,
+      opp: r ? r.opp : null,
+      margin: r ? r.margin : null,
+      bench: benchPts(gw, e.id),
+      star: starPts(gw, e.id)
+    };
+  });
+  rows.sort((a,b) => b.score - a.score);
+  return rows;
+}
+
+
+/* ===================== cup ===================== */
+function makeDraw(){
+  let ids = entries().map(e => e.id);
+  if (ids.length < 4){ toast('Load the league data first.'); return; }
+  const shuffle = a => { for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const nBye = Math.pow(2, Math.ceil(Math.log2(ids.length))) - ids.length;
+  const seeded = $('#cupSeeded') ? $('#cupSeeded').checked : true;
+  const haveTable = ((S.data && S.data.standings) || []).some(r => r.matches_played > 0);
+  let byeTeams, rest;
+  if (seeded && haveTable && nBye > 0){
+    const order = ids.slice().sort((a,b) => seedRank(a) - seedRank(b));
+    byeTeams = order.slice(0, nBye);
+    rest = shuffle(order.slice(nBye));
+  } else {
+    ids = shuffle(ids);
+    byeTeams = ids.slice(0, nBye);
+    rest = ids.slice(nBye);
+  }
+  const r1 = [];
+  for (let i = 0; i < rest.length; i += 2) r1.push({a: rest[i], b: rest[i+1] != null ? rest[i+1] : null});
+  const janGws = (() => { const [a,b] = calRange('jan'); const out = []; for (let g = a; g <= b; g++) out.push(g); return out; })();
+  S.local.cup = {byes: byeTeams, rounds: [r1], gws: janGws, made: new Date().toISOString(),
+                 seeded: !!(seeded && haveTable && nBye > 0)};
+  saveLocal(); render();
+  toast(S.local.cup.seeded ? 'Draw made — byes to the top of the table.' : 'Draw made.');
+}
+function cupResolve(){
+  const c = S.local.cup; if (!c) return null;
+  const rounds = [];
+  let current = c.rounds[0].map(t => Object.assign({}, t));
+  let gwi = 0;
+  let carry = c.byes.slice();
+  let idx = 0;
+  while (current.length){
+    const gw = c.gws[gwi];
+    const ties = current.map(t => {
+      const ap = t.b == null ? null : scoreOf(gw, t.a);
+      const bp = t.b == null ? null : scoreOf(gw, t.b);
+      let win = null;
+      if (t.b == null) win = t.a;
+      else if (ap != null && bp != null){
+        if (ap > bp) win = t.a; else if (bp > ap) win = t.b;
+        else win = seedRank(t.a) <= seedRank(t.b) ? t.a : t.b;
+      }
+      return {a:t.a, b:t.b, ap, bp, win, gw};
+    });
+    rounds.push({name: roundName(ties.length * 2, idx, c.byes.length), ties, gw});
+    const winners = ties.map(t => t.win).filter(x => x != null);
+    const pool = (idx === 0 ? carry.concat(winners) : winners);
+    if (ties.some(t => t.win == null)) break;
+    if (pool.length <= 1){ rounds.push({champion: pool[0]}); break; }
+    current = [];
+    for (let i = 0; i < pool.length; i += 2) current.push({a: pool[i], b: pool[i+1] != null ? pool[i+1] : null});
+    gwi++; idx++;
+    if (gwi >= c.gws.length) break;
+  }
+  return rounds;
+}
+function roundName(nInRound, idx, byes){
+  if (idx === 0 && byes > 0) return 'First round';
+  const m = {2:'Final', 4:'Semi-finals', 8:'Quarter-finals', 16:'Last 16', 32:'Last 32'};
+  return m[nInRound] || ('Round of ' + nInRound);
+}
+function cupShape(n){
+  if (n < 2) return null;
+  const slots = Math.pow(2, Math.ceil(Math.log2(n)));
+  const byes = slots - n;
+  const roundsNeeded = Math.log2(slots);
+  return {slots, byes, ties: (n - byes) / 2, roundsNeeded};
+}
+function seedRank(eid){
+  const st = (S.data && S.data.standings) || [];
+  const r = st.find(x => String(x.league_entry) === String(eid));
+  return r ? r.rank : 99;
+}
+
+/* ===================== render ===================== */
+function whoCell(eid){
+  const e = entryById(eid);
+  if (!e) return '<td class="who">#' + esc(eid) + '</td>';
+  if (isAvg(e)) return '<td class="who"><span class="team">AVERAGE</span><span class="mgr">the app\'s dummy side — not a prize winner</span></td>';
+  return '<td class="who"><span class="team">' + esc(e.name) + '</span><span class="mgr">' + esc(e.manager || '') + '</span></td>';
+}
+function emptyState(title, body){
+  return '<div class="empty"><b>' + esc(title) + '</b>' + body + '</div>';
+}
+const NEED_DATA = () => emptyState('Nothing to show yet', 'Head to the <b>Data</b> tab, run the fetch script and paste the result in.');
+
+function render(){
+  renderHeader(); renderRefresh(); renderSeedBanner(); renderWall(); renderHonours(); renderStandings();
+  renderMonth(); renderWeekly(); renderStar(); renderCup(); renderRules(); renderCal();
+  fillSelects();
+  applyAdmin();
+}
+
+function renderHeader(){
+  if (S.data){
+    $('#leagueName').textContent = S.data.leagueName || 'The Undercard';
+    $('#leagueSub').textContent = 'The Undercard · ' + entries().length + ' managers' + (allEntries().length > entries().length ? ' (+ AVERAGE)' : '');
+  }
+  const played = playedGws();
+  const cur = played.length ? Math.max(...played) : 0;
+  const chip = $('#gwChip');
+  if (!cur){ $('#gwChipTxt').textContent = 'Pre-season'; $('#gwChipPrize').textContent = ''; chip.classList.remove('live'); }
+  else {
+    const live = PRIZES.find(p => { const [a,b] = calRange(p.key); return cur >= a && cur <= b; });
+    $('#gwChipTxt').textContent = 'GW' + cur;
+    $('#gwChipPrize').textContent = live ? ' · ' + live.name : '';
+    chip.classList.add('live');
+  }
+}
+
+function provisionalGw(){
+  const gs = playedGws();
+  for (let i = gs.length - 1; i >= 0; i--){ const g = gwOf(gs[i]); if (g && g.provisional) return gs[i]; }
+  return null;
+}
+function renderSeedBanner(){
+  const b = $('#seedBanner'); if (!b) return;
+  const prov = provisionalGw();
+  const noData = S.data && !playedGws().length;
+  if (prov){
+    b.hidden = false;
+    const g = gwOf(prov);
+    b.innerHTML = '<b>Gameweek ' + prov + ' is still being played.</b> ' +
+      (g && g.liveComputed
+        ? 'These scores are added up from every player in each starting eleven, because the league API does not update its own head-to-head figures until the gameweek is processed. '
+        : '') +
+      'They will move until the last match finishes, so nothing here is settled. Bench points are not loaded, and show as a dash rather than a zero.';
+  } else if (noData){
+    b.hidden = false;
+    b.innerHTML = '<b>No gameweek has finished yet.</b> The teams below are real; the tables fill in once the first one is done.';
+  } else {
+    b.hidden = true;
+  }
+}
+function renderWall(){
+  const played = playedGws();
+  const cur = played.length ? Math.max(...played) : 0;
+  $('#wall').innerHTML = PRIZES.map((p, i) => {
+    const [a,b] = calRange(p.key);
+    let state = 'soon';
+    if (cur > b) state = 'done'; else if (cur >= a) state = 'live';
+    let winLine = '';
+    if (p.type === 'cup'){
+      const rr = cupResolve();
+      const champ = rr && rr.length && rr[rr.length-1].champion;
+      winLine = champ ? '<b>' + esc(teamName(champ)) + '</b>' : (S.local.cup ? 'Draw made' : 'Not drawn yet');
+    } else {
+      const t = prizeTable(p);
+      const top = t.rows.find(r => r.value != null);
+      if (!S.data) winLine = '—';
+      else if (!t.gws.length) winLine = 'Not started';
+      else if (top) winLine = (state === 'done' ? 'Won by ' : 'Leading: ') + '<b>' + esc(teamName(top.eid)) + '</b> · ' + top.value;
+      else winLine = 'No qualifiers yet';
+    }
+    return '<button class="month" data-state="' + state + '" data-fam="' + p.fam + '" data-key="' + p.key + '">' +
+      '<div class="mrow"><span class="mname">' + esc(p.month) + '</span><span class="mgw">GW' + a + '–' + b + '</span></div>' +
+      '<div class="mprize"><b>' + esc(p.name) + '</b><br>' + esc(p.line) + '</div>' +
+      (potOf(p.key) ? '<div class="mpot">' + money(potOf(p.key)) + '</div>' : '') +
+      '<div class="mwin"><span class="mwintxt">' + winLine + '</span>' +
+      (state !== 'soon' ? '<span class="stamp ' + state + '">' + (state === 'live' ? 'Live' : 'Settled') + '</span>' : '') +
+      '</div>' +
+    '</button>';
+  }).join('');
+  $$('#wall .month').forEach(btn => btn.addEventListener('click', () => {
+    S.monthKey = btn.dataset.key;
+    if (btn.dataset.key === 'jan') switchTab('cup'); else switchTab('month');
+  }));
+}
+
+function renderHonours(){
+  const box = $('#honours');
+  if (!S.data){ box.innerHTML = NEED_DATA(); return; }
+  const played = playedGws(); const cur = played.length ? Math.max(...played) : 0;
+  const settled = PRIZES.filter(p => cur > calRange(p.key)[1]);
+
+  const winnerOf = p => {
+    if (p.type === 'cup'){
+      const rr = cupResolve();
+      const c = rr && rr.length && rr[rr.length-1].champion;
+      return c ? {eid:c, val:''} : null;
+    }
+    const t = prizeTable(p);
+    const top = t.rows.find(r => r.value != null);
+    if (!top) return null;
+    const joint = t.rows.filter(r => r.value === top.value);
+    return {eid: top.eid, val: top.value + ' pts', joint: joint.length};
+  };
+
+  // the money league: every manager, what they have won, what they are owed
+  const won = {};
+  entries().forEach(e => { won[e.id] = {months:[], cash:0}; });
+  let awarded = 0;
+  const rows = settled.map(p => {
+    const w = winnerOf(p);
+    const pot = potOf(p.key);
+    let cell = '<span class="small">Not awarded</span>';
+    if (w){
+      const share = w.joint && w.joint > 1 ? pot / w.joint : pot;
+      if (won[w.eid]){ won[w.eid].months.push(p.month); won[w.eid].cash += share; }
+      awarded += share * (w.joint && w.joint > 1 ? w.joint : 1);
+      cell = '<b>' + esc(teamName(w.eid)) + '</b>' + (w.joint > 1 ? ' <span class="pill warnp">shared ' + w.joint + '</span>' : '');
+    }
+    return '<tr><td style="width:104px"><b>' + esc(p.month) + '</b></td><td>' + esc(p.name) + '</td>' +
+           '<td>' + cell + '</td><td class="num">' + esc(w ? w.val : '') + '</td>' +
+           '<td class="num">' + money(pot) + '</td></tr>';
+  }).join('');
+
+  const totalPot = PRIZES.reduce((t,p) => t + potOf(p.key), 0);
+  const league = entries().map(e => ({eid:e.id, n:won[e.id].months.length, cash:won[e.id].cash, months:won[e.id].months}))
+    .sort((a,b) => b.cash - a.cash || b.n - a.n || teamName(a.eid).localeCompare(teamName(b.eid)));
+
+  const leagueTbl = '<div class="tw"><table id="tblMoney"><thead><tr><th class="rank">#</th><th>Team</th><th class="num">Trophies</th><th>Months</th><th class="num">Won</th></tr></thead><tbody>' +
+    league.map((r,i) => '<tr' + (i === 0 && r.cash > 0 ? ' class="lead"' : '') + '><td class="rank" data-r="' + (i+1) + '">' + (i+1) + '</td>' +
+      whoCell(r.eid) + '<td class="num">' + r.n + '</td>' +
+      '<td class="small">' + (r.months.length ? r.months.map(esc).join(', ') : '—') + '</td>' +
+      '<td class="num big">' + money(r.cash) + '</td></tr>').join('') + '</tbody></table></div>';
+
+  const summary = '<div class="kpis" style="margin-bottom:14px">' +
+    '<div class="kpi"><div class="k">Season pot</div><div class="v">' + money(totalPot) + '</div><div class="s">' + PRIZES.length + ' months</div></div>' +
+    '<div class="kpi"><div class="k">Handed out</div><div class="v">' + money(awarded) + '</div><div class="s">' + settled.length + ' settled</div></div>' +
+    '<div class="kpi"><div class="k">Still to play for</div><div class="v">' + money(totalPot - awarded) + '</div><div class="s">' + (PRIZES.length - settled.length) + ' to come</div></div>' +
+    '</div>';
+
+  box.innerHTML = summary + leagueTbl +
+    (rows ? '<h4 style="font-size:15px;margin:20px 0 8px;color:var(--muted)">Month by month</h4>' +
+            '<div class="tw"><table><thead><tr><th>Month</th><th>Prize</th><th>Winner</th><th class="num">Score</th><th class="num">Worth</th></tr></thead><tbody>' + rows + '</tbody></table></div>'
+          : '<p class="small" style="margin:14px 0 0">Nothing settled yet — the first trophy goes at the end of August.</p>');
+}
+
+function renderStandings(){
+  const t = $('#tblStandings');
+  const st = (S.data && S.data.standings) || [];
+  if (!st.length){
+    t.innerHTML = '<tbody><tr><td>' + (S.data
+      ? emptyState('No results yet', 'The table fills in the moment the first gameweek finishes.')
+      : NEED_DATA()) + '</td></tr></tbody>';
+    return;
+  }
+  t.innerHTML = '<thead><tr><th class="rank">#</th><th>Team</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">PF</th><th class="num">PA</th><th class="num">Pts</th></tr></thead><tbody>' +
+    st.slice().sort((a,b) => a.rank - b.rank).map(r =>
+      '<tr' + (isAvg(entryById(r.league_entry)) ? ' class="avgrow"' : (r.rank === 1 ? ' class="lead"' : '')) + '><td class="rank" data-r="' + r.rank + '">' + r.rank + '</td>' + whoCell(r.league_entry) +
+      '<td class="num">' + r.matches_played + '</td><td class="num">' + r.matches_won + '</td><td class="num">' + r.matches_drawn + '</td><td class="num">' + r.matches_lost + '</td>' +
+      '<td class="num">' + r.points_for + '</td><td class="num">' + r.points_against + '</td><td class="num big">' + r.total + '</td></tr>').join('') + '</tbody>';
+}
+
+function renderMonth(){
+  const key = S.monthKey || currentMonthKey();
+  const p = PRIZES.find(x => x.key === key) || PRIZES[0];
+  $('#monthTitle').textContent = p.month + ' · ' + p.name;
+  const [a,b] = calRange(p.key);
+  $('#monthNote').innerHTML = 'GW' + a + '–' + b + (potOf(p.key) ? ' · <b style="color:var(--teal)">' + money(potOf(p.key)) + '</b>' : '');
+  $('#monthDesc').textContent = p.line + '.' + (p.dir === 'asc' ? ' Lowest wins.' : p.type === 'cup' ? '' : ' Highest wins.');
+  const sel = $('#monthPick');
+  if (sel.options.length !== PRIZES.length){
+    sel.innerHTML = PRIZES.map(x => '<option value="' + x.key + '">' + x.month + ' · ' + x.name + '</option>').join('');
+  }
+  sel.value = p.key;
+
+  const t = $('#tblMonth');
+  if (!S.data){ t.innerHTML = '<tbody><tr><td>' + NEED_DATA() + '</td></tr></tbody>'; return; }
+  if (p.type === 'cup'){ t.innerHTML = '<tbody><tr><td>' + emptyState('January is the cup', 'The bracket lives on <b>The Cup</b> tab.') + '</td></tr></tbody>'; return; }
+  const tab = prizeTable(p);
+  if (!tab.gws.length){ t.innerHTML = '<tbody><tr><td>' + emptyState('Not started', 'This prize runs over GW' + a + '–' + b + '.') + '</td></tr></tbody>'; return; }
+  const showDetail = p.type === 'pos';
+  t.innerHTML = '<thead><tr><th class="rank">#</th><th>Team</th><th class="num">' + esc(tab.cols[0]) + '</th><th>' + esc(tab.cols[1]) + '</th></tr></thead><tbody>' +
+    tab.rows.map(r => {
+      let side = '';
+      if (showDetail) side = '<span class="mono small">' + tab.gws.map((g,i) => 'GW' + g + ' ' + (r.detail[i] == null ? '–' : r.detail[i])).join('  ·  ') + '</span>';
+      else side = '<span class="small">' + (r.html ? (r.note || '') : esc(r.note || '')) + '</span>';
+      return '<tr' + (r.rank === 1 ? ' class="lead"' : '') + '><td class="rank" data-r="' + (r.rank || '–') + '">' + (r.rank || '–') + '</td>' + whoCell(r.eid) +
+        '<td class="num big">' + (r.value == null ? '–' : r.value) + '</td><td>' + side + '</td></tr>';
+    }).join('') + '</tbody>';
+}
+function currentMonthKey(){
+  const played = playedGws(); const cur = played.length ? Math.max(...played) : 1;
+  const p = PRIZES.find(x => { const [a,b] = calRange(x.key); return cur >= a && cur <= b; });
+  return p ? p.key : 'aug';
+}
+
+function renderWeekly(){
+  const played = playedGws();
+  const sel = $('#gwPick');
+  sel.innerHTML = played.length ? played.slice().reverse().map(g => '<option value="' + g + '">Gameweek ' + g + '</option>').join('') : '<option>—</option>';
+  if (S.gw == null || !played.includes(S.gw)) S.gw = played.length ? Math.max(...played) : null;
+  if (S.gw != null) sel.value = String(S.gw);
+
+  if (!played.length){
+    $('#tblWeek').innerHTML = '<tbody><tr><td>' + NEED_DATA() + '</td></tr></tbody>';
+    return;
+  }
+  const gw = S.gw;
+  const gObj = gwOf(gw);
+  $('#gwDetailMeta').innerHTML = 'Gameweek ' + gw + (gObj && gObj.provisional ? ' <span class="pill warnp">In progress</span>' : '');
+  const rows = weekTable(gw);
+  $('#tblWeek').innerHTML = '<thead><tr><th class="rank">#</th><th>Team</th><th class="num">Score</th><th>Result</th><th class="num">Bench</th><th class="num">Star</th></tr></thead><tbody>' +
+    rows.map((r,i) =>
+      '<tr' + (i === 0 ? ' class="lead"' : '') + '><td class="rank" data-r="' + (i+1) + '">' + (i+1) + '</td>' + whoCell(r.eid) +
+      '<td class="num big">' + r.score + '</td>' +
+      '<td>' + (r.res ? '<span class="pill ' + r.res.toLowerCase() + '">' + r.res + ' ' + r.me + '–' + r.them + '</span> <span class="small">v ' + esc(teamName(r.opp)) + '</span>' : '<span class="small">—</span>') + '</td>' +
+      '<td class="num">' + (r.bench == null ? '<span class="small">–</span>' : r.bench) + '</td>' +
+      '<td class="num">' + (r.star == null ? '<span class="small">–</span>' : r.star) + '</td></tr>'
+    ).join('') + '</tbody>';
+}
+
+function nextGw(){
+  const played = playedGws();
+  const cur = played.length ? Math.max(...played) : 0;
+  if (S.data && S.data.nextEvent) return S.data.nextEvent;
+  return cur + 1;
+}
+
+function decGws(){ const [a,b] = calRange('dec'); const out = []; for (let g = a; g <= b; g++) out.push(g); return out; }
+function starWindowState(){
+  const [a,b] = calRange('dec');
+  const ng = nextGw();
+  if (ng < a) return {state:'before', a, b, ng};
+  if (ng > b) return {state:'after', a, b, ng};
+  return {state:'open', a, b, ng};
+}
+function renderStar(){
+  const [da, db] = calRange('dec');
+  const w = starWindowState();
+  $('#starScope').textContent = 'December only · GW' + da + '–' + db;
+  $('#decMeta').textContent = 'GW' + da + '–' + db;
+
+  const banner = $('#starWindow'), form = $('#starForm');
+  if (w.state === 'before'){
+    banner.innerHTML = '<b>Not running yet.</b> Star player picks open at gameweek ' + da + ', when December starts. Nothing to name until then.';
+    form.hidden = true;
+  } else if (w.state === 'after'){
+    banner.innerHTML = '<b>December is over.</b> The star player table below is final.';
+    form.hidden = true;
+  } else {
+    banner.innerHTML = '<b>Naming for gameweek ' + w.ng + '.</b> Get your pick in before the deadline — a week you miss scores nothing, and there are no picks after the fact.';
+    form.hidden = false;
+    $('#starGwMeta').textContent = 'Gameweek ' + w.ng;
+  }
+
+  const t = $('#tblStarDec');
+  if (!S.data){ t.innerHTML = '<tbody><tr><td>' + NEED_DATA() + '</td></tr></tbody>'; return; }
+  const gws = monthGws('dec');
+  if (!gws.length){
+    t.innerHTML = '<tbody><tr><td>' + emptyState('December has not started', 'This one runs over GW' + da + '–' + db + '.') + '</td></tr></tbody>';
+    return;
+  }
+  const rows = entries().map(e => {
+    let tot = 0, n = 0, last = null;
+    for (const g of gws){ const v = starPts(g, e.id); if (v != null){ tot += v; n++; last = {g, v, nm: pickFor(g, e.id, 'star')}; } }
+    return {eid:e.id, tot, n, missed: gws.length - n, last};
+  }).sort((a,b) => b.tot - a.tot);
+  t.innerHTML = '<thead><tr><th class="rank">#</th><th>Team</th><th class="num">Star pts</th><th class="num">Weeks named</th><th>Latest pick</th></tr></thead><tbody>' +
+    rows.map((r,i) => '<tr' + (i === 0 && r.tot > 0 ? ' class="lead"' : '') + '><td class="rank" data-r="' + (i+1) + '">' + (i+1) + '</td>' + whoCell(r.eid) +
+      '<td class="num big">' + r.tot + '</td>' +
+      '<td class="num">' + r.n + ' of ' + gws.length + (r.missed ? ' <span class="small">(' + r.missed + ' missed)</span>' : '') + '</td>' +
+      '<td class="small">' + (r.last ? esc(r.last.nm) + ' · GW' + r.last.g + ' · ' + r.last.v + ' pts' : '—') + '</td></tr>').join('') + '</tbody>';
+}
+
+function renderCup(){
+  const c = S.local.cup;
+  const box = $('#bracket');
+  const lead = $('#cupLead');
+  const n = entries().length;
+  const shape = cupShape(n);
+  const [ja, jb] = calRange('jan');
+  const janCount = jb - ja + 1;
+  if (lead){
+    if (!shape) lead.textContent = 'Straight knockout, drawn at random. Load the league data and this will size itself to however many of you there are.';
+    else {
+      const byeBit = shape.byes === 0
+        ? 'Everyone starts in the ' + roundName(n, 1, 0).toLowerCase() + ', so no byes.'
+        : (shape.byes === 1 ? 'One team drawn out first gets a bye' : shape.byes + ' teams drawn out first get a bye') +
+          ' into the ' + roundName(shape.slots / 2, 1, 0).toLowerCase() + '.';
+      lead.innerHTML = '<b>' + n + ' teams, ' + shape.roundsNeeded + ' rounds.</b> ' + byeBit +
+        ' Your gameweek score is your score in the tie — highest wins, and if it is level the higher league position goes through.' +
+        (shape.roundsNeeded > janCount
+          ? ' <b style="color:var(--bad)">January only has ' + janCount + ' gameweeks set, and this needs ' + shape.roundsNeeded + ' — widen January on the Data tab or the final will not be reached.</b>'
+          : '');
+    }
+  }
+  $('#cupMeta').textContent = c ? ('Drawn · GW' + c.gws[0] + ' onwards') : 'Not drawn';
+  if (!S.data){ box.innerHTML = NEED_DATA(); return; }
+  if (!c){ box.innerHTML = emptyState('No draw yet', 'Press <b>Make the draw</b> once January is in sight.'); return; }
+  const rounds = cupResolve() || [];
+  const champ = rounds.length && rounds[rounds.length-1].champion;
+  const cols = rounds.filter(r => r.ties).map(r => {
+    const ties = r.ties.map(t => {
+      const side = (id, pts, won) => id == null
+        ? '<div class="side"><span class="small">Bye</span></div>'
+        : '<div class="side' + (won ? ' won' : '') + '"><span>' + esc(teamName(id)) + '</span><span class="p">' + (pts == null ? '–' : pts) + '</span></div>';
+      return '<div class="tie">' + side(t.a, t.ap, t.win === t.a) + side(t.b, t.bp, t.win === t.b) + '</div>';
+    }).join('');
+    return '<div class="round"><h4>' + esc(r.name) + ' <span class="small">GW' + r.gw + '</span></h4>' + ties + '</div>';
+  }).join('');
+  const byeCol = c.byes.length ? '<div class="round"><h4>Byes <span class="small">' + (c.seeded ? 'top of the table' : 'drawn out') + '</span></h4>' + c.byes.map(b => '<div class="tie"><div class="side"><span>' + esc(teamName(b)) + '</span><span class="p">—</span></div></div>').join('') + '</div>' : '';
+  box.innerHTML = byeCol + cols + (champ ? '<div class="round"><h4>Winner</h4><div class="tie"><div class="side won"><span><b>' + esc(teamName(champ)) + '</b></span><span class="p">🏆</span></div></div></div>' : '');
+}
+
+
+function renderRules(){
+  const cal = k => { const [a,b] = calRange(k); return 'GW' + a + '\u2013' + b; };
+  const monthly = PRIZES.map(p => {
+    let detail = '';
+    if (p.type === 'pos'){
+      detail = p.scope === 'squad'
+        ? '<p>Every gameweek in ' + p.month + ', add up the points scored by <b>every ' + POSNAME[p.pos].toLowerCase() + ' you own</b> \u2014 starting eleven and bench alike. Most points over the month wins.</p>'
+        : '<p>Every gameweek in ' + p.month + ', add up the points scored by the <b>' + POSNAME[p.pos].toLowerCase() + ' in your starting eleven</b>. Auto-substitutions count, so it is your final eleven, not the one you set on Friday. Most points over the month wins.</p>';
+    }
+    if (p.type === 'draft12'){
+      detail = '<p>Take your <b>first and second round picks</b>. Add up every point those two score during ' + p.month + ', <b>wherever they end up</b> \u2014 traded, dropped, or picked up by someone else, they still count against you. <b>Fewest points wins.</b></p>';
+    }
+    if (p.type === 'winlow') detail = '<p>Look at every fixture you <b>won</b> in ' + p.month + ' and take your lowest winning score. The <b>lowest of those</b> across the league wins the month. Win nothing and you are not in it.</p>';
+    if (p.type === 'losehigh') detail = '<p>Look at every fixture you <b>lost</b> in ' + p.month + ' and take your highest losing score. The <b>highest of those</b> across the league wins the month. Go unbeaten and you miss out, which is a nice problem.</p>';
+    if (p.type === 'benchmax') detail = '<p>Your <b>single best bench total</b> in one gameweek during ' + p.month + ' \u2014 not the sum of the month, one week only. Highest wins. Bench means the four players who finished on your bench after auto-substitutions.</p>';
+    if (p.type === 'star') detail = '<p>Runs in <b>' + p.month + ' only</b>. Each gameweek of the month, name one player from your squad before the deadline; whatever they score that week goes into your total. The same player may be named as often as you like.</p>' +
+      '<p>Miss a deadline and that week scores nothing — there are no picks after the fact. Most points over the month wins.</p>';
+    if (p.type === 'cup'){
+      const n = entries().length, sh = cupShape(n);
+      detail = '<p>A straight knockout drawn at random. ' +
+        (sh ? '<b>' + n + ' teams</b> means ' + (sh.byes ? sh.byes + ' get a bye past the first round' : 'a clean bracket with no byes') + ', over ' + sh.roundsNeeded + ' rounds. ' : '') +
+        'Your <b>gameweek score is your score in the tie</b>; the higher score goes through, and a level tie is broken by league position.</p>' +
+        '<p>Rounds are played on consecutive January gameweeks in order.</p>';
+    }
+    return '<details class="rule"><summary>' + esc(p.month) + ' \u00b7 ' + esc(p.name) + ' <span class="tag">' + cal(p.key) + '</span></summary><div class="rb">' + detail + '</div></details>';
+  }).join('');
+
+  $('#rulesBox').innerHTML =
+    '<h3 style="font-size:20px;margin:14px 0 8px">Monthly prizes</h3>' + monthly +
+    '<h3 style="font-size:20px;margin:22px 0 8px">Season-long</h3>' +
+    '<h3 style="font-size:20px;margin:22px 0 8px">The small print</h3>' +
+    '<details class="rule"><summary>How scores are worked out</summary><div class="rb">' +
+      '<ul><li>Everything comes from the official Fantasy Draft API, so scores match the app exactly.</li>' +
+      '<li>Squads are taken <b>after auto-substitutions</b>. If your keeper did not play and the bench keeper came on, the bench keeper is the one that counts.</li>' +
+      '<li>Head-to-head scores are only taken once a gameweek is complete. Mid-week the API still reports the last processed figures, which can be badly out.</li>' +
+      '<li>Trades and waivers do not change a settled month \u2014 a prize is scored from the squad you actually had that gameweek.</li>' +
+      '<li>Ties on a monthly prize are shared unless you agree otherwise beforehand.</li>' +
+      '<li>With an odd number of managers the Draft app adds an <b>AVERAGE</b> side so everyone gets a fixture. Beating it is a real win and counts for October and March, but AVERAGE itself never appears in a prize table.</li></ul></div></details>';
+}
+
+function renderCal(){
+  $('#tblCal').innerHTML = '<thead><tr><th>Month</th><th>Prize</th><th class="num">Gameweeks</th><th class="num">Worth</th></tr></thead><tbody>' +
+    PRIZES.map(p => { const [a,b] = calRange(p.key);
+      return '<tr><td><b>' + esc(p.month) + '</b></td><td class="small">' + esc(p.name) + '</td>' +
+        '<td class="num">GW' + a + '\u2013' + b + '</td><td class="num big">' + money(potOf(p.key)) + '</td></tr>'; }).join('') +
+    '</tbody>';
+}
+
+function fillSelects(){
+  const opts = entries().map(e => '<option value="' + e.id + '">' + esc(e.name) + (e.manager ? ' — ' + esc(e.manager) : '') + '</option>').join('');
+  for (const sel of ['#starWho']){
+    const el = $(sel); const keep = el.value;
+    el.innerHTML = opts || '<option value="">Load the league first</option>';
+    if (keep) el.value = keep;
+  }
+  const dl = $('#playerList');
+  if (S.data && S.data.players){
+    const ids = Object.keys(S.data.players);
+    dl.innerHTML = ids.slice(0, 900).map(id => '<option value="' + esc(S.data.players[id].n) + '">').join('');
+  }
+  const fl = $('#freshLine');
+  if (fl) fl.textContent = S.data && S.data.generated
+    ? new Date(S.data.generated).toLocaleString('en-GB', {weekday:'short', day:'numeric', month:'short', hour:'2-digit', minute:'2-digit'}) +
+      (playedGws().length ? ' · ' + playedGws().length + ' gameweeks scored' : ' · no gameweek finished yet')
+    : 'never';
+}
+
+/* ===================== interactions ===================== */
+function switchTab(name){
+  S.tab = name;
+  $$('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+  $$('section.panel').forEach(p => { p.hidden = p.id !== ('p-' + name); });
+  window.scrollTo({top:0, behavior:'instant'});
+  if (name === 'month') renderMonth();
+}
+$$('.tab').forEach(b => b.addEventListener('click', () => switchTab(b.dataset.tab)));
+
+
+$('#monthPick').addEventListener('change', e => { S.monthKey = e.target.value; renderMonth(); });
+$('#gwPick').addEventListener('change', e => { S.gw = Number(e.target.value); renderWeekly(); });
+
+async function copyText(txt, okMsg){
+  try { await navigator.clipboard.writeText(txt); toast(okMsg); return; }
+  catch(e){}
+  const ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); toast(okMsg); } catch(e){ toast('Copy blocked — the text is in the box below.'); $('#scriptBox').hidden = false; $('#scriptBox').value = txt; }
+  document.body.removeChild(ta);
+}
+
+function pickLine(who, gw, star){
+  const e = entryById(who);
+  const nm = e ? (e.manager || e.name) : 'Unknown';
+  return ['UNDERCARD GW' + gw, nm, 'STAR: ' + star].join(' · ');
+}
+function recordPick(gw, eid, kind, name){
+  if (!S.local.picks[gw]) S.local.picks[gw] = {};
+  if (!S.local.picks[gw][eid]) S.local.picks[gw][eid] = {};
+  S.local.picks[gw][eid][kind] = name;
+}
+
+
+
+
+$('#cupDraw').addEventListener('click', () => {
+  if (S.local.cup && !confirm('There is already a draw. Make a new one?')) return;
+  makeDraw();
+});
+$('#cupClear').addEventListener('click', () => { S.local.cup = null; saveLocal(); render(); });
+
+
+
+
+
+
+/* ===================== admin view ===================== */
+// There is no way for the page to know who is looking at it, so the league-admin
+// tabs are hidden behind a gesture rather than an identity: tap the crest three
+// times. This hides clutter from the group; it is not a lock, and anyone who
+// reads the page source can find it. Nothing behind it is sensitive.
+const ADMIN_KEY = 'undercard.admin';
+const ADMIN_TABS = ['data'];
+function isAdmin(){
+  try { return localStorage.getItem(ADMIN_KEY) === '1'; } catch(e){ return false; }
+}
+function setAdmin(on){
+  try { on ? localStorage.setItem(ADMIN_KEY, '1') : localStorage.removeItem(ADMIN_KEY); } catch(e){}
+  applyAdmin();
+  toast(on ? 'Admin view on — the Data tab is visible on this device.' : 'Admin view off.');
+}
+function applyAdmin(){
+  const on = isAdmin();
+  ADMIN_TABS.forEach(t => {
+    const tab = document.querySelector('.tab[data-tab="' + t + '"]');
+    const panel = $('#p-' + t);
+    if (tab) tab.hidden = !on;
+    if (panel && !on) panel.hidden = true;
+  });
+  if (!on && ADMIN_TABS.includes(S.tab)) switchTab('season');
+}
+(function(){
+  let taps = [], t0 = 0;
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#crest')) return;
+    const now = Date.now();
+    if (now - t0 > 2000) taps = [];
+    t0 = now; taps.push(now);
+    if (taps.length >= 3){ taps = []; setAdmin(!isAdmin()); }
+  });
+})();
+
+/* ===================== refresh ===================== */
+function dataAgeHours(){
+  if (!S.data || !S.data.generated) return null;
+  const t = Date.parse(S.data.generated);
+  return isNaN(t) ? null : (Date.now() - t) / 3600000;
+}
+function ageWords(h){
+  if (h == null) return '';
+  if (h < 0.05) return 'just now';
+  if (h < 1) return Math.round(h * 60) + 'm ago';
+  if (h < 2) return 'an hour ago';
+  if (h < 24) return Math.round(h) + 'h ago';
+  const d = Math.round(h / 24);
+  return d === 1 ? 'yesterday' : d + ' days ago';
+}
+function renderRefresh(){
+  const btn = $('#refreshBtn'); if (!btn) return;
+  const h = dataAgeHours();
+  $('#refreshAge').textContent = h == null ? '' : '\u00b7 ' + ageWords(h);
+  btn.classList.toggle('stale', h != null && h > 6);
+}
+async function doRefresh(){
+  const btn = $('#refreshBtn');
+  btn.classList.add('busy');
+  $('#refreshAge').textContent = '\u00b7 checking';
+  const before = S.data && S.data.generated;
+  await loadShared();
+  render();
+  btn.classList.remove('busy');
+  const after = S.data && S.data.generated;
+  toast(S.fetchFailed ? 'Could not reach the score file. Try again in a moment.'
+        : after !== before ? 'Updated.' : 'Already up to date.');
+}
+$('#refreshBtn').addEventListener('click', e => { e.preventDefault(); doRefresh(); });
+
+/* ===================== boot ===================== */
+(async function init(){
+  readLocal();
+  try {
+    const d = localStorage.getItem(LS + '.data');
+    if (d) S.data = JSON.parse(d);
+  } catch(e){}
+
+  await loadShared();
+  if (!S.local.cfg.leagueId && S.data && S.data.leagueId) S.local.cfg.leagueId = String(S.data.leagueId);
+
+  render();
+})();
+
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "leagueId": 27214,
+  "_comment": "Edit this file to change prize money, gameweek ranges, or the agreed draft picks. The site retotals on the next update.",
+  "cal": {
+    "aug": [
+      1,
+      2
+    ],
+    "sep": [
+      3,
+      5
+    ],
+    "oct": [
+      6,
+      9
+    ],
+    "nov": [
+      10,
+      12
+    ],
+    "dec": [
+      13,
+      18
+    ],
+    "jan": [
+      19,
+      23
+    ],
+    "feb": [
+      24,
+      27
+    ],
+    "mar": [
+      28,
+      31
+    ],
+    "apr": [
+      32,
+      34
+    ],
+    "may": [
+      35,
+      38
+    ]
+  },
+  "pot": {
+    "aug": 60,
+    "sep": 60,
+    "oct": 60,
+    "nov": 60,
+    "dec": 60,
+    "jan": 60,
+    "feb": 60,
+    "mar": 60,
+    "apr": 60,
+    "may": 60
+  },
+  "_draft": "Rounds 1 and 2 as the league agreed them, by league_entry id. The draft API records different pairs; these are the ones that count.",
+  "draft": {
+    "140573": [
+      154,
+      439
+    ],
+    "141630": [
+      106,
+      55
+    ],
+    "141792": [
+      379,
+      399
+    ],
+    "141892": [
+      411,
+      366
+    ],
+    "142292": [
+      397,
+      526
+    ],
+    "143581": [
+      165,
+      25
+    ],
+    "161025": [
+      427,
+      4
+    ],
+    "161876": [
+      12,
+      40
+    ],
+    "173303": [
+      426,
+      428
+    ]
+  }
+}

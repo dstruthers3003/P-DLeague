@@ -1,0 +1,34 @@
+name: Update scores
+
+on:
+  schedule:
+    - cron: '17 * * * *'      # hourly, at 17 past
+  workflow_dispatch:           # and a manual "Run workflow" button
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/fetch.mjs
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "undercard-bot"
+          git config user.email "actions@github.com"
+          git add data/season.json
+          if git diff --staged --quiet; then
+            echo "no change"
+          else
+            git commit -m "scores: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
