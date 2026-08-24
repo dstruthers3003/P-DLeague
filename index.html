@@ -479,7 +479,7 @@ code.k{font-size:12px;background:var(--surface-2);padding:1px 5px;border-radius:
     <div class="card" style="margin-bottom:16px">
       <div class="card-head"><h3>Changing the rules</h3><span class="meta">config.json</span></div>
       <div class="card-body">
-        <p style="margin:0 0 8px;font-size:13.5px;color:var(--ink-2)">Prize money, the gameweeks each month covers, and the agreed first and second round picks all live in <code class="k">data/config.json</code>. Edit that file and everything below retotals on the next update.</p>
+        <p style="margin:0 0 8px;font-size:13.5px;color:var(--ink-2)">Prize money, the gameweeks each month covers, and the agreed first and second round picks all live in <code class="k">config.json</code>. Edit that file and everything below retotals on the next update.</p>
         <p style="margin:0;font-size:13.5px;color:var(--ink-2)">The star player names for December are the only thing that cannot be fetched — they go in the same file.</p>
       </div>
     </div>
@@ -671,7 +671,7 @@ function readLocal(){
 async function loadShared(){
   let fetched = null;
   try {
-    const r = await fetch('data/season.json?ts=' + Date.now(), {cache:'no-store'});
+    const r = await fetch('season.json?ts=' + Date.now(), {cache:'no-store'});
     if (r.ok) fetched = await r.json();
   } catch(e){}
   let seed = null;

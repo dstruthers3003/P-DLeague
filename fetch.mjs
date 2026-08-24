@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /* The Undercard — season fetcher.
    Runs on GitHub Actions, which has ordinary internet access, so it can read
-   the Fantasy Draft API in full. Writes data/season.json for the page to load.
+   the Fantasy Draft API in full. Writes season.json for the page to load.
    No dependencies: Node 18+ has fetch built in. */
 
 import { readFile, writeFile } from 'node:fs/promises';
 
 const API = 'https://draft.premierleague.com/api';
-const cfg = JSON.parse(await readFile(new URL('../data/config.json', import.meta.url), 'utf8'));
+const cfg = JSON.parse(await readFile(new URL('./config.json', import.meta.url), 'utf8'));
 const LEAGUE = cfg.leagueId;
 
 const log = (...a) => console.log('[undercard]', ...a);
@@ -143,5 +143,5 @@ const out = {
   standings: details.standings,
   fixtures: details.matches.map(m => ({ ev: m.event, a: m.league_entry_1, b: m.league_entry_2 }))
 };
-await writeFile(new URL('../data/season.json', import.meta.url), JSON.stringify(out));
-log(`wrote data/season.json (${(JSON.stringify(out).length / 1024).toFixed(0)}kb)`);
+await writeFile(new URL('./season.json', import.meta.url), JSON.stringify(out));
+log(`wrote season.json (${(JSON.stringify(out).length / 1024).toFixed(0)}kb)`);
