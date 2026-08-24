@@ -486,7 +486,10 @@ code.k{font-size:12px;background:var(--surface-2);padding:1px 5px;border-radius:
 
     <div class="card">
       <div class="card-head"><h3>Calendar and prize money</h3><span class="meta">As configured</span></div>
-      <div class="card-body"><div class="tw"><table id="tblCal"></table></div></div>
+      <div class="card-body">
+        <p class="small" id="calSource" style="margin:0 0 10px"></p>
+        <div class="tw"><table id="tblCal"></table></div>
+      </div>
     </div>
   </section>
 
@@ -1336,6 +1339,10 @@ function renderRules(){
 }
 
 function renderCal(){
+  const src = $('#calSource');
+  if (src) src.innerHTML = (S.data && S.data.calDerived)
+    ? 'Read from the real fixture deadlines each update \u2014 a gameweek belongs to the month its deadline falls in. Any month can be pinned by hand in <code class="k">config.json</code>.'
+    : 'Using the ranges set in <code class="k">config.json</code>; the fixture calendar could not be read on the last update.';
   $('#tblCal').innerHTML = '<thead><tr><th>Month</th><th>Prize</th><th class="num">Gameweeks</th><th class="num">Worth</th></tr></thead><tbody>' +
     PRIZES.map(p => { const [a,b] = calRange(p.key);
       return '<tr><td><b>' + esc(p.month) + '</b></td><td class="small">' + esc(p.name) + '</td>' +

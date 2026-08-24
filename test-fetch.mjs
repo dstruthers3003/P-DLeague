@@ -36,6 +36,13 @@ globalThis.fetch = async (url) => {
   const j = body => ({ok:true, status:200, json: async () => body});
   if (u.endsWith('/game')) return j({current_event:2, next_event:3});
   if (u.endsWith(`/league/${L}/details`)) return j({league:{name:'Mock League'}, league_entries:LE, matches, standings:[]});
+  if (u.includes('fantasy.premierleague.com')) return j({events: [
+    {id:1, deadline_time:'2026-08-21T17:30:00Z'}, {id:2, deadline_time:'2026-08-28T17:30:00Z'},
+    {id:3, deadline_time:'2026-09-12T10:00:00Z'}, {id:4, deadline_time:'2026-09-19T10:00:00Z'},
+    {id:5, deadline_time:'2026-10-03T10:00:00Z'}, {id:6, deadline_time:'2026-10-24T10:00:00Z'},
+    {id:7, deadline_time:'2026-11-07T13:30:00Z'}, {id:8, deadline_time:'2026-11-21T13:30:00Z'},
+    {id:9, deadline_time:'2026-11-28T13:30:00Z'}, {id:10, deadline_time:'2026-12-05T13:30:00Z'}
+  ]});
   if (u.endsWith('/bootstrap-static')) return j({elements});
   let m = u.match(/\/event\/(\d+)\/live$/);
   if (m) return j({elements: livePts(Number(m[1]))});
@@ -49,20 +56,19 @@ globalThis.fetch = async (url) => {
   throw new Error('unexpected fetch: ' + u);
 };
 
-const cfgPath = new URL('..data/config.json', 'file:///');
-const cfgURL = new URL('../data/config.json', import.meta.url);
-const seasonURL = new URL('../data/season.json', import.meta.url);
+const cfgURL = new URL('./config.json', import.meta.url);
+const seasonURL = new URL('./season.json', import.meta.url);
 const orig = JSON.parse(await readFile(cfgURL, 'utf8'));
 // the fetcher writes season.json for real, so keep the live one safe
 let liveSeason = null;
 try { liveSeason = await readFile(seasonURL, 'utf8'); } catch {}
-await writeFile(new URL('../data/config.json', import.meta.url), JSON.stringify({
+await writeFile(new URL('./config.json', import.meta.url), JSON.stringify({
   ...orig, leagueId: L, draft: {'101':[1,2], '102':[16,17], '103':[31,32]}
 }));
 
 await import('./fetch.mjs');
 
-const out = JSON.parse(await readFile(new URL('../data/season.json', import.meta.url), 'utf8'));
+const out = JSON.parse(await readFile(new URL('./season.json', import.meta.url), 'utf8'));
 await writeFile(cfgURL, JSON.stringify(orig, null, 2));
 if (liveSeason !== null) await writeFile(seasonURL, liveSeason);   // put the real data back
 
@@ -97,7 +103,10 @@ t('AVERAGE gets the mean when in play', typeof m2b.bp === 'number' && m2b.bp > 0
 
 t('draft picks tracked every week', out.draftPts['1']['1'] != null && out.draftPts['2']['31'] != null, JSON.stringify(out.draftPts['1']));
 t('agreed draft carried through', JSON.stringify(out.draft['101']) === '[1,2]', JSON.stringify(out.draft));
-t('config calendar carried through', out.cal && out.cal.aug && out.pot && out.pot.aug === 60, JSON.stringify(out.pot && out.pot.aug));
+t('calendar derived from real deadlines', JSON.stringify(out.cal.nov) === '[7,9]', JSON.stringify(out.cal));
+t('every November gameweek is in range', out.cal.nov[0] === 7 && out.cal.nov[1] === 9, JSON.stringify(out.cal.nov));
+t('August derived too', JSON.stringify(out.cal.aug) === '[1,2]', JSON.stringify(out.cal.aug));
+t('prize money still carried', out.pot && out.pot.aug === 60, JSON.stringify(out.pot && out.pot.aug));
 t('timestamped', !!Date.parse(out.generated), out.generated);
 
 console.log(bad ? `\n${bad} FAILED` : '\nall fetcher checks passed');

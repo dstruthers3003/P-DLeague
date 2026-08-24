@@ -1,48 +1,8 @@
 {
   "leagueId": 27214,
   "_comment": "Edit this file to change prize money, gameweek ranges, or the agreed draft picks. The site retotals on the next update.",
-  "cal": {
-    "aug": [
-      1,
-      2
-    ],
-    "sep": [
-      3,
-      5
-    ],
-    "oct": [
-      6,
-      9
-    ],
-    "nov": [
-      10,
-      12
-    ],
-    "dec": [
-      13,
-      18
-    ],
-    "jan": [
-      19,
-      23
-    ],
-    "feb": [
-      24,
-      27
-    ],
-    "mar": [
-      28,
-      31
-    ],
-    "apr": [
-      32,
-      34
-    ],
-    "may": [
-      35,
-      38
-    ]
-  },
+  "_cal": "Left empty on purpose: gameweek ranges are read from the real fixture deadlines each run. Add a month here only to override it, e.g. \"nov\": [10, 13].",
+  "cal": {},
   "pot": {
     "aug": 60,
     "sep": 60,

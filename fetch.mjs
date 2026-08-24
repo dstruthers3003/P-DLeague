@@ -29,6 +29,40 @@ async function api(path, tries = 3) {
 const [game, details, boot] = await Promise.all([
   api('game'), api(`league/${LEAGUE}/details`), api('bootstrap-static')
 ]);
+
+// Which gameweeks belong to which month, from the real deadline dates rather
+// than a guess. A gameweek counts as November's if its deadline falls in
+// November, which is how the game itself labels them.
+const MONTHKEY = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+async function monthRanges() {
+  let events = boot.events;
+  if (!Array.isArray(events) || !events.length) {
+    try {
+      const r = await fetch('https://fantasy.premierleague.com/api/bootstrap-static/', {
+        headers: { 'User-Agent': 'undercard-league-page' }
+      });
+      if (r.ok) events = (await r.json()).events;
+    } catch { /* fall through to the configured ranges */ }
+  }
+  if (!Array.isArray(events) || !events.length) return null;
+  const byMonth = {};
+  for (const ev of events) {
+    if (!ev.deadline_time) continue;
+    const k = MONTHKEY[new Date(ev.deadline_time).getUTCMonth()];
+    (byMonth[k] = byMonth[k] || []).push(ev.id);
+  }
+  const out = {};
+  for (const [k, ids] of Object.entries(byMonth)) out[k] = [Math.min(...ids), Math.max(...ids)];
+  return out;
+}
+const derived = await monthRanges();
+if (derived) {
+  log('gameweeks by month: ' + Object.entries(derived).map(([k, v]) => `${k} ${v[0]}-${v[1]}`).join(', '));
+} else {
+  log('could not read the fixture calendar; using the ranges in config.json');
+}
+// config.json wins where it says something, so a month can still be overridden by hand
+const cal = { ...(derived || {}), ...(cfg.cal || {}) };
 log(`league "${details.league.name}", current event ${game.current_event}`);
 
 // Players: full list, with positions — the thing that was impossible before.
@@ -138,7 +172,8 @@ const out = {
   nextEvent: game.next_event,
   entries, players, gws, draftPts,
   draft: cfg.draft,
-  cal: cfg.cal,
+  cal,
+  calDerived: derived || null,
   pot: cfg.pot,
   standings: details.standings,
   fixtures: details.matches.map(m => ({ ev: m.event, a: m.league_entry_1, b: m.league_entry_2 }))
